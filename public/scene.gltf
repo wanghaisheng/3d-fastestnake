@@ -1,0 +1,265 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3988,
+      "max": [
+        0.4185563921928406,
+        0.27436524629592896,
+        0.026493024080991745
+      ],
+      "min": [
+        -1.9026148319244385,
+        -2.138059139251709,
+        -2.1964993476867676
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 47856,
+      "componentType": 5126,
+      "count": 3988,
+      "max": [
+        0.9990657567977905,
+        0.9995688199996948,
+        0.9999918937683105
+      ],
+      "min": [
+        -0.998537003993988,
+        -0.9995684623718262,
+        -0.9993934631347656
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3988,
+      "max": [
+        0.8374078869819641,
+        0.9910230040550232
+      ],
+      "min": [
+        0.008976978249847889,
+        0.008976978249847889
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 31904,
+      "componentType": 5126,
+      "count": 3988,
+      "max": [
+        0.8374078869819641,
+        0.9910230040550232
+      ],
+      "min": [
+        0.008976978249847889,
+        0.008976978249847889
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 21312,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "giga (https://sketchfab.com/gits3d)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bomb-1a9395dac5bc4742bdd780b3cce93416",
+      "title": "Bomb"
+    },
+    "generator": "Sketchfab-12.66.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 85248,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 63808,
+      "byteOffset": 85248,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 95712,
+      "byteOffset": 149056,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 244768,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Bomb_baseColor.png"
+    },
+    {
+      "uri": "textures/Bomb_metallicRoughness.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Bomb",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        },
+        "roughnessFactor": 0.7009299624853316
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Plane.004_Bomb_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.16604235768318176,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.686880971258283e-17,
+        -0.16604235768318176,
+        0.0,
+        0.0,
+        0.16604235768318176,
+        3.686880971258283e-17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "fdca186218894b25bba7eb920067df85.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        99.70192934284806,
+        1.817488009904019,
+        7.498134611194129,
+        0.0,
+        0.04670913066100613,
+        97.04175436246604,
+        -24.14323359684688,
+        0.0,
+        -7.715122335604942,
+        24.07477385205905,
+        96.75165981624207,
+        0.0,
+        85.1859130859375,
+        142.33389282226563,
+        95.923828125,
+        1.0
+      ],
+      "name": "Plane.004"
+    },
+    {
+      "mesh": 0,
+      "name": "Plane.004_Bomb_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}
