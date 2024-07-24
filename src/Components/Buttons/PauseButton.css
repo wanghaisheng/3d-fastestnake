@@ -1,0 +1,50 @@
+.play-button {
+  font-size: calc(1.5vw + 1.5vh);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 1vw;
+  cursor: pointer;
+}
+
+.playpause {
+  display: flex;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+
+/* .playpause:hover {
+  background: #464646;
+} */
+
+.playpause .button {
+  width: 2.5vw;
+  height: 2.5vh;
+
+  background: #f0f0f0;
+  transition: inherit;
+  clip-path: polygon(
+    0 0,
+    50% 25%,
+    50% 75%,
+    50% 75%,
+    50% 25%,
+    100% 50%,
+    100% 50%,
+    0 100%
+  );
+}
+
+.playpause.playing .button {
+  clip-path: polygon(
+    0 0,
+    40% 0,
+    40% 100%,
+    60% 100%,
+    60% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}

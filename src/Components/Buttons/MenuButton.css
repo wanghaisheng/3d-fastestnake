@@ -1,0 +1,8 @@
+.burger-button {
+  font-size: calc(1.5vw + 1.5vh);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 1vw;
+}

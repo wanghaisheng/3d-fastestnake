@@ -1,0 +1,8 @@
+.game-button {
+  font-size: 3vmin;
+  padding: 2vmin 1vmin;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 100;
+}

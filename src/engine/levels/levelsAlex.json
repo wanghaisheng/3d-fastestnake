@@ -1,0 +1,239 @@
+[
+  {
+    "field": "11",
+    "time": "30000",
+    "timerStep": "1",
+    "food": "5",
+    "lives": "3",
+    "obstacles": [],
+    "bonuses": [],
+    "maxScores": "5"
+  },
+  {
+    "field": "17",
+    "time": "30000",
+    "timerStep": "1",
+    "food": "10",
+    "lives": "3",
+    "obstacles": ["fix", "fix", "fix", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "snakeBreaksObstacles",
+        "value": "4",
+        "startFood": "0",
+        "endFood": "2"
+      }
+    ],
+    "maxScores": "10"
+  },
+  {
+    "field": "21",
+    "time": "60000",
+    "timerStep": "1",
+    "food": "15",
+    "lives": "3",
+    "obstacles": ["x", "y", "x", "y", "x", "y"],
+    "bonuses": [
+      {
+        "type": "snakeStopsGrowing",
+        "value": "2",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraTime",
+        "value": "8000",
+        "startFood": "10",
+        "endFood": "12"
+      }
+    ],
+    "maxScores": "15"
+  },
+  {
+    "field": "23",
+    "time": "60000",
+    "timerStep": "1",
+    "food": "20",
+    "lives": "3",
+    "obstacles": ["x", "y", "x", "y", "fix", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "snakeCrossesBorders",
+        "value": "2",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraLives",
+        "value": "3",
+        "startFood": "12",
+        "endFood": "14"
+      }
+    ],
+    "maxScores": "40"
+  },
+  {
+    "field": "27",
+    "time": "60000",
+    "timerStep": "1",
+    "food": "25",
+    "lives": "3",
+    "obstacles": [
+      "x",
+      "y",
+      "x",
+      "y",
+      "x",
+      "y",
+      "fix",
+      "fix",
+      "fix",
+      "fix",
+      "fix",
+      "fix"
+    ],
+    "bonuses": [
+      {
+        "type": "addExtraScores",
+        "value": "10",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "doubleScoresFood",
+        "value": "2",
+        "startFood": "20",
+        "endFood": "22"
+      }
+    ],
+    "maxScores": "50"
+  },
+  {
+    "field": "30",
+    "time": "60000",
+    "timerStep": "3",
+    "food": "30",
+    "lives": "3",
+    "obstacles": ["fix", "fix", "fix", "fix", "fix", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "addExtraTime",
+        "value": "10000",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraLives",
+        "value": "2",
+        "startFood": "20",
+        "endFood": "22"
+      }
+    ],
+    "maxScores": "60"
+  },
+  {
+    "field": "35",
+    "time": "80000",
+    "timerStep": "3",
+    "food": "35",
+    "lives": "3",
+    "obstacles": ["x", "x", "y", "y", "x", "x", "y", "y"],
+    "bonuses": [
+      {
+        "type": "snakeBreaksObstacles",
+        "value": "5",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "doubleScoresFood",
+        "value": "2",
+        "startFood": "25",
+        "endFood": "27"
+      }
+    ],
+    "maxScores": "35"
+  },
+  {
+    "field": "40",
+    "time": "80000",
+    "timerStep": "1",
+    "food": "40",
+    "lives": "3",
+    "obstacles": ["x", "y", "x", "y", "fix", "fix", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "snakeStopsGrowing",
+        "value": "3",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraScores",
+        "value": "2",
+        "startFood": "30",
+        "endFood": "32"
+      }
+    ],
+    "maxScores": "80"
+  },
+  {
+    "field": "45",
+    "time": "80000",
+    "timerStep": "1",
+    "food": "45",
+    "lives": "3",
+    "obstacles": ["x", "y", "fix", "fix", "x", "y", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "addExtraTime",
+        "value": "15000",
+        "startFood": "0",
+        "endFood": "10"
+      },
+      {
+        "type": "addExtraLives",
+        "value": "3",
+        "startFood": "30",
+        "endFood": "40"
+      }
+    ],
+    "maxScores": "45"
+  },
+  {
+    "field": "50",
+    "time": "100000",
+    "timerStep": "1",
+    "food": "50",
+    "lives": "3",
+    "obstacles": [
+      "x",
+      "y",
+      "x",
+      "y",
+      "x",
+      "y",
+      "x",
+      "y",
+      "fix",
+      "fix",
+      "fix",
+      "fix"
+    ],
+    "bonuses": [
+      {
+        "type": "snakeCrossesBorders",
+        "value": "5",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "doubleScoresFood",
+        "value": "3",
+        "startFood": "40",
+        "endFood": "42"
+      }
+    ],
+    "maxScores": "54"
+  }
+]

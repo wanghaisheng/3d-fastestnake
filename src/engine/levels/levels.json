@@ -1,0 +1,107 @@
+[
+  {
+    "field": "101",
+    "time": "800000",
+    "timerStep": "1",
+    "food": "25",
+    "lives": "3",
+    "obstacles": ["fix", "fix", "fix", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "doubleScoresFood",
+        "value": "2",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraLives",
+        "value": "1",
+        "startFood": "3",
+        "endFood": "5"
+      }
+    ],
+    "maxScores": "30"
+  },
+  {
+    "field": "21",
+    "time": "60000",
+    "timerStep": "1",
+    "food": "15",
+    "lives": "3",
+    "obstacles": ["x", "y", "x", "y", "x", "y"],
+    "bonuses": [
+      {
+        "type": "snakeStopsGrowing",
+        "value": "2",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraTime",
+        "value": "8000",
+        "startFood": "10",
+        "endFood": "12"
+      }
+    ],
+    "maxScores": "35"
+  },
+  {
+    "field": "23",
+    "time": "60000",
+    "timerStep": "1",
+    "food": "20",
+    "lives": "3",
+    "obstacles": ["x", "y", "x", "y", "fix", "fix", "fix"],
+    "bonuses": [
+      {
+        "type": "snakeCrossesBorders",
+        "value": "3",
+        "startFood": "0",
+        "endFood": "2"
+      },
+      {
+        "type": "addExtraLives",
+        "value": "2",
+        "startFood": "12",
+        "endFood": "14"
+      }
+    ],
+    "maxScores": "40"
+  },
+  {
+    "field": "27",
+    "time": "60000",
+    "timerStep": "1",
+    "food": "25",
+    "lives": "3",
+    "obstacles": [
+      "x",
+      "y",
+      "x",
+      "y",
+      "x",
+      "y",
+      "fix",
+      "fix",
+      "fix",
+      "fix",
+      "fix",
+      "fix"
+    ],
+    "bonuses": [
+      {
+        "type": "addExtraScores",
+        "value": "10",
+        "startFood": "0",
+        "endFood": "5"
+      },
+      {
+        "type": "doubleScoresFood",
+        "value": "2",
+        "startFood": "20",
+        "endFood": "25"
+      }
+    ],
+    "maxScores": "50"
+  }
+]

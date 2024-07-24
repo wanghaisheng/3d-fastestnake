@@ -1,0 +1,26 @@
+.refresh-button {
+  background-color: #293447; /* Зеленый цвет */
+  color: white;
+  /* padding: 10px 20px; */
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.refresh-button i {
+  font-size: calc(1.5vw + 1.5vh);
+}
+
+.refresh-button.fa-spin {
+  animation: spin 1s linear infinite; /* Анимация вращения */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
