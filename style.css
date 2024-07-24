@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: #e3f2fd;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background: #293447;
+}
+
+.game-info {
+  color: #b8c6dc;
+  font-size: 3vmin;
+  font-weight: 500;
+  padding: 2vmin 1vmin;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+/* @media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
+  .wrapper {
+    width: 90vmin;
+    height: 107vmin;
+  }
+  /* .game-details {
+    font-size: 1rem;
+    padding: 15px 5px;
+  } */
+
+/****************************************************************************************/
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+} */
+/* .wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #293447;
+} */
+/* .game-details {
+  color: #b8c6dc;
+  font-size: 3.2vmin;
+  font-weight: 500;
+  padding: 2vmin 1vmin;
+  width: 95vmin;
+  display: flex;
+  justify-content: space-between;
+}
+.game-details + div {
+  height: 100vh !important;
+} */
+/* @media screen and (min-width: 600px), (min-height: 1200px) {
+  .game-details + div {
+    width: 85vw !important;
+  }
+}
+@media screen and (min-width: 700px), (min-height: 300px) {
+  /* iPhone SE -,   */
+/* .game-details + div {
+    width: 85vw !important;
+  }
+}
+@media screen and (min-width: 800px), (min-height: 400px) { */
+/* iPhone 12 -,  */
+/* .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 900px), (min-height: 300px) { */
+/* iPhone XR -, Galaxy S8 -, */
+/* .game-details + div {
+    width: 85vw !important;
+  }
+} 
+@media screen and (min-width: 900px), (min-height: 400px) { */
+/* iPhone XR -,  */
+/* .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 900px), (min-height: 600px) { */
+/* iPhone SE |, iPhone XR |, iPhone 12 |, Galaxy S8 |,  */
+/* .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 900px), (min-height: 1100px) { */
+/* iPhone 14 -, Pixel 7 -, Galaxy S20 -, */
+/* .game-details + div {
+    width: 80vw !important;
+  }
+}
+@media screen and (min-width: 1000px), (min-height: 1400px) { */
+/* iPad Pro |,  */
+/* .game-details + div {
+    width: 30vw !important;
+  }
+}
+@media screen and (min-width: 1000px), (min-height: 600px) { */
+/* iPad Pro |,  */
+/* .game-details + div {
+    width: 100vw !important;
+  }
+}
+@media screen and (min-width: 1300px), (min-height: 900px) { */
+/* iPhone 14 |, Pixel 7 |, Galaxy S20 |, iPad Mini |, iPad Air |,  */
+/* .game-details + div {
+    width: 75vw !important;
+  }
+} */
