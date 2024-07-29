@@ -1,6 +1,9 @@
 /**
  * @type obstacleContactProps Аргументы функции, проверяющей контакты препятствий
  */
+
+import { Vector3 } from "@react-three/fiber";
+
 /**
  * Функция, проверяющая контакты препятствий, получает параметры:
  *   1. type - тип препятствия по направлению движения
@@ -27,4 +30,12 @@ export interface newObstacleStep extends obstacleContactProps {
 export type obstacleData = {
   coord: number[][];
   step: number[];
+};
+
+export type hedgehogProps = {
+  key: number;
+  coord: Vector3;
+  direction: number[];
+  index: number;
+  line: string;
 };

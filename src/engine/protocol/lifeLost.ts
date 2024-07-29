@@ -19,7 +19,7 @@ function lifeLost(): void {
   stopTimer();
   if (checkMistake()) {
     setLives(-1);
-    setInterval(
+    const intervalID = setInterval(
       () => {
         attention = !attention;
         setSnakeOpacity(attention ? 0.4 : 1);
@@ -27,6 +27,11 @@ function lifeLost(): void {
       300,
       { once: true }
     );
+
+    setTimeout(() => {
+      clearInterval(intervalID);
+      setSnakeOpacity(1);
+    }, 5000);
 
     noMistakeWasMade();
   }

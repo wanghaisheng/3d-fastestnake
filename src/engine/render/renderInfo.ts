@@ -58,6 +58,7 @@ function renderInfo(): void {
       checkTimerStep() || checkPause() ? 0 : getStep()
     }`;
   }
+
   if (attention === attentionInterval) attention = 0;
 }
 
