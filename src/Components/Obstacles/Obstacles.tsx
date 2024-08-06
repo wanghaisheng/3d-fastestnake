@@ -39,19 +39,6 @@ export const ObstaclesFix: React.FC = () => {
     </>
   );
 };
-
-// function hadgehog() {
-//   const points = [];
-//   for (let i = 0; i < 10; i++) {
-//     points.push(new THREE.Vector2(Math.sin(i * 0.2) * 10 + 5, (i - 5) * 2));
-//   }
-//   const geometry = new THREE.LatheGeometry(points);
-//   const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-//   const lathe = new THREE.Mesh(geometry, material);
-
-//   return lathe;
-// }
-
 export const ObstaclesX: React.FC = () => {
   const gridSize = getField();
   const [obstaclesXCoord, setObstaclesXCoord] = useState<Array<Vector3>>([
@@ -77,14 +64,6 @@ export const ObstaclesX: React.FC = () => {
           index={index}
           line={"X"}
         />
-        // <mesh
-        //   key={Math.random()}
-        //   position={coord}
-        //   rotation={[0, 0, ((direction[index] - 1) / 2) * 3.2]}
-        // >
-        //   <coneGeometry args={[1, 2, 15, 1, false, 4.7, 3.12]} />
-        //   <meshStandardMaterial color={"#ffdf00"} />
-        // </mesh>
       ))}
     </>
   );
@@ -115,24 +94,6 @@ export const ObstaclesY: React.FC = () => {
           index={index}
           line={"Y"}
         />
-        // <>
-        //   <mesh
-        //     key={Math.random()}
-        //     position={coord}
-        //     rotation={[0, 0, direction[index] * -1.6]}
-        //   >
-        //     <coneGeometry args={[1, 2, 15, 1, false, 4.7, 3.12]} />
-        //     <meshStandardMaterial color={"#ffff66"} />
-        //   </mesh>
-        //   <mesh
-        //     key={Math.random()}
-        //     position={coord}
-        //     rotation={[0, 0, direction[index] * -1.6]}
-        //   >
-        //     <latheGeometry />
-        //     <meshStandardMaterial color={"#ffff66"} />
-        //   </mesh>
-        // </>
       ))}
     </>
   );

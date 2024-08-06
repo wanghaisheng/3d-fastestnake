@@ -33,7 +33,6 @@ export type obstacleData = {
 };
 
 export type hedgehogProps = {
-  key: number;
   coord: Vector3;
   direction: number[];
   index: number;

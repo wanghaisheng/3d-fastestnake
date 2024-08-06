@@ -34,9 +34,10 @@ const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
       from: { position: item.initialPosition },
       to: { position: item.finalPosition },
       config: {
+        // duration: 1000,
         mass: 1,
-        tension: 170,
-        friction: 26,
+        tension: 200,
+        friction: 30,
       },
       delay: index,
     }))

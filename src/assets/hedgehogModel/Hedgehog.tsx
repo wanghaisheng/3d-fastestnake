@@ -2,7 +2,7 @@ import { Vector2 } from "three";
 import { hedgehogProps } from "../../types/obstacle";
 
 function Hedgehog(props: hedgehogProps) {
-  const { key, coord, direction, index, line } = props;
+  const { coord, direction, index, line } = props;
   const frontPoints = [];
   for (let i = 0; i < 10; i++) {
     frontPoints.push(
@@ -19,7 +19,6 @@ function Hedgehog(props: hedgehogProps) {
   return (
     <group position={coord}>
       <mesh
-        key={key}
         rotation={[
           0,
           0,
@@ -32,7 +31,6 @@ function Hedgehog(props: hedgehogProps) {
         <meshStandardMaterial color={"#A18E74"} />
       </mesh>
       <mesh
-        key={Math.random()}
         rotation={[
           0,
           0,
@@ -45,7 +43,6 @@ function Hedgehog(props: hedgehogProps) {
         <meshStandardMaterial color={"#5B586A"} />
       </mesh>
       <mesh
-        key={Math.random()}
         rotation={[
           0,
           0,
@@ -58,7 +55,6 @@ function Hedgehog(props: hedgehogProps) {
         <meshStandardMaterial color={"#5B586A"} />
       </mesh>
       <mesh
-        key={Math.random()}
         position={[
           line === "X" ? 0 : -1 * direction[index],
           line === "X" ? -1 * direction[index] : 0,
@@ -68,15 +64,11 @@ function Hedgehog(props: hedgehogProps) {
         <sphereGeometry args={[0.52, 5]} />
         <meshStandardMaterial color={"#5B586A"} />
       </mesh>
-      <mesh
-        key={Math.random()}
-        position={[line === "Y" ? direction[index] * 0.1 : 0, 0, 0.2]}
-      >
+      <mesh position={[line === "Y" ? direction[index] * 0.1 : 0, 0, 0.2]}>
         <sphereGeometry args={[0.1, 5]} />
         <meshStandardMaterial color={"#5B586A"} />
       </mesh>
       <mesh
-        key={Math.random()}
         position={
           line === "X"
             ? [direction[index] * 0.2, direction[index] * -0.3, 0.2]
@@ -87,7 +79,6 @@ function Hedgehog(props: hedgehogProps) {
         <meshStandardMaterial color={"#5B586A"} />
       </mesh>
       <mesh
-        key={Math.random()}
         position={
           line === "X"
             ? [direction[index] * -0.2, direction[index] * -0.3, 0.2]
