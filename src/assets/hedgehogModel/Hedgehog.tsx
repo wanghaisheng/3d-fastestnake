@@ -2,7 +2,7 @@ import { Vector2 } from "three";
 import { hedgehogProps } from "../../types/obstacle";
 
 function Hedgehog(props: hedgehogProps) {
-  const { coord, direction, index, line } = props;
+  const { direction, index, line } = props;
   const frontPoints = [];
   for (let i = 0; i < 10; i++) {
     frontPoints.push(
@@ -17,7 +17,7 @@ function Hedgehog(props: hedgehogProps) {
   }
 
   return (
-    <group position={coord}>
+    <group>
       <mesh
         rotation={[
           0,

@@ -2,18 +2,14 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Vector3 } from "@react-three/fiber";
+import { animated, useSprings } from "@react-spring/three";
 import { getObstaclesFixCoord } from "../../engine/obstacles/obstaclesFix";
 import { getField } from "../../engine/field/fieldPerLevel";
-import {
-  getObstaclesStepX,
-  getObstaclesXCoord,
-} from "../../engine/obstacles/obstaclesX";
+import * as OBSTACLES_X from "../../engine/obstacles/obstaclesX";
 import { getTimer } from "../../engine/time/timer";
-import {
-  getObstaclesStepY,
-  getObstaclesYCoord,
-} from "../../engine/obstacles/obstaclesY";
+import * as OBSTACLES_Y from "../../engine/obstacles/obstaclesY";
 import Hedgehog from "../../assets/hedgehogModel/Hedgehog";
+import { positionAnimationProps } from "../../types/three";
 
 export const ObstaclesFix: React.FC = () => {
   const gridSize = getField();
@@ -41,29 +37,53 @@ export const ObstaclesFix: React.FC = () => {
 };
 export const ObstaclesX: React.FC = () => {
   const gridSize = getField();
-  const [obstaclesXCoord, setObstaclesXCoord] = useState<Array<Vector3>>([
-    [0, 0, 0],
+  const [obstaclesXCoord, setObstaclesXCoord] = useState<
+    positionAnimationProps[]
+  >([
+    {
+      initialPosition: [0, 0, 0],
+      finalPosition: [0, 0, 0],
+    },
   ]);
-  const [direction, setDirection] = useState(getObstaclesStepX());
+  const [direction, setDirection] = useState(OBSTACLES_X.getObstaclesStepX());
   useEffect(() => {
-    const xObstacles: Vector3[] = getObstaclesXCoord().map((coord) => {
-      const xObstacleX = Math.round(coord[0] - gridSize / 2 - 1);
-      const xObstaclesY = Math.round(coord[1] - gridSize / 2 - 1);
-      return [xObstacleX, xObstaclesY, 0];
+    const xObstacles = OBSTACLES_X.getObstaclesXCoord().map((coord, index) => {
+      const initialPosition = [
+        Math.round(coord[0] - gridSize / 2 - 1) - direction[index],
+        Math.round(coord[1] - gridSize / 2 - 1),
+        0,
+      ];
+      const finalPosition = [
+        Math.round(coord[0] - gridSize / 2 - 1),
+        Math.round(coord[1] - gridSize / 2 - 1),
+        0,
+      ];
+      return { initialPosition, finalPosition };
     });
-    setDirection(getObstaclesStepX());
+    setDirection(OBSTACLES_X.getObstaclesStepX());
     setObstaclesXCoord(xObstacles);
   }, [getTimer()]);
+  const move = useSprings(
+    obstaclesXCoord.length,
+    obstaclesXCoord.map((item) => ({
+      from: { position: item.initialPosition },
+      to: { position: item.finalPosition },
+      config: {
+        mass: 1,
+        tension: 200,
+        friction: 30,
+      },
+    }))
+  );
   return (
     <>
-      {obstaclesXCoord.map((coord: Vector3, index: number) => (
-        <Hedgehog
+      {move.map((coord, index: number) => (
+        <animated.group
           key={Math.random()}
-          coord={coord}
-          direction={direction}
-          index={index}
-          line={"X"}
-        />
+          position={coord.position.to((x, y, z) => [x, y, z])}
+        >
+          <Hedgehog direction={direction} index={index} line={"X"} />
+        </animated.group>
       ))}
     </>
   );
@@ -71,29 +91,53 @@ export const ObstaclesX: React.FC = () => {
 
 export const ObstaclesY: React.FC = () => {
   const gridSize = getField();
-  const [obstaclesYCoord, setObstaclesYCoord] = useState<Array<Vector3>>([
-    [0, 0, 0],
+  const [obstaclesYCoord, setObstaclesYCoord] = useState<
+    positionAnimationProps[]
+  >([
+    {
+      initialPosition: [0, 0, 0],
+      finalPosition: [0, 0, 0],
+    },
   ]);
-  const [direction, setDirection] = useState(getObstaclesStepY());
+  const [direction, setDirection] = useState(OBSTACLES_Y.getObstaclesStepY());
   useEffect(() => {
-    const yObstacles: Vector3[] = getObstaclesYCoord().map((coord) => {
-      const yObstacleX = Math.round(coord[0] - gridSize / 2 - 1);
-      const yObstaclesY = Math.round(coord[1] - gridSize / 2 - 1);
-      return [yObstacleX, yObstaclesY, 0];
+    const yObstacles = OBSTACLES_Y.getObstaclesYCoord().map((coord, index) => {
+      const initialPosition = [
+        Math.round(coord[0] - gridSize / 2 - 1),
+        Math.round(coord[1] - gridSize / 2 - 1) - direction[index],
+        0,
+      ];
+      const finalPosition = [
+        Math.round(coord[0] - gridSize / 2 - 1),
+        Math.round(coord[1] - gridSize / 2 - 1),
+        0,
+      ];
+      return { initialPosition, finalPosition };
     });
-    setDirection(getObstaclesStepY());
+    setDirection(OBSTACLES_Y.getObstaclesStepY());
     setObstaclesYCoord(yObstacles);
   }, [getTimer()]);
+  const move = useSprings(
+    obstaclesYCoord.length,
+    obstaclesYCoord.map((item) => ({
+      from: { position: item.initialPosition },
+      to: { position: item.finalPosition },
+      config: {
+        mass: 1,
+        tension: 200,
+        friction: 30,
+      },
+    }))
+  );
   return (
     <>
-      {obstaclesYCoord.map((coord: Vector3, index: number) => (
-        <Hedgehog
+      {move.map((coord, index: number) => (
+        <animated.group
           key={Math.random()}
-          coord={coord}
-          direction={direction}
-          index={index}
-          line={"Y"}
-        />
+          position={coord.position.to((x, y, z) => [x, y, z])}
+        >
+          <Hedgehog direction={direction} index={index} line={"Y"} />
+        </animated.group>
       ))}
     </>
   );

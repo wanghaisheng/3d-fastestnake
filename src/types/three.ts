@@ -8,7 +8,7 @@ export interface GeometryProps {
   scale: number;
 }
 
-export type SnakePositionAnimationProps = {
+export type positionAnimationProps = {
   initialPosition: number[];
   finalPosition: number[];
 };

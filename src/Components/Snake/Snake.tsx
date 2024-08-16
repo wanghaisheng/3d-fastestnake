@@ -6,7 +6,7 @@ import setSnakeHeadProps from "./snakeHead/setSnakeHeadProps";
 import setSnakeTailProps from "./snakeTail/setSnakeTailProps";
 import setSnakeBodyProps from "./snakeBody/setSnakeBodyProps";
 import { a, useSprings } from "@react-spring/three";
-import { SnakePositionAnimationProps } from "../../types/three";
+import { positionAnimationProps } from "../../types/three";
 import SnakeTail from "../../assets/snakeModel/snakeTail/snakeTail";
 import SnakeHead from "../../assets/snakeModel/snakeHead/SnakeHead";
 
@@ -15,7 +15,7 @@ interface SnakeProps {
 }
 
 const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
-  const snake: SnakePositionAnimationProps[] = [
+  const snake: positionAnimationProps[] = [
     {
       initialPosition: [0, 0, 0],
       finalPosition: [0, 0, 0],
@@ -34,7 +34,6 @@ const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
       from: { position: item.initialPosition },
       to: { position: item.finalPosition },
       config: {
-        // duration: 1000,
         mass: 1,
         tension: 200,
         friction: 30,
