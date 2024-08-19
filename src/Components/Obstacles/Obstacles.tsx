@@ -10,6 +10,8 @@ import { getTimer } from "../../engine/time/timer";
 import * as OBSTACLES_Y from "../../engine/obstacles/obstaclesY";
 import Hedgehog from "../../assets/hedgehogModel/Hedgehog";
 import { positionAnimationProps } from "../../types/three";
+import { easeLinear } from "d3-ease";
+import Mushroom from "../../assets/mushroomModel/Mushroom";
 
 export const ObstaclesFix: React.FC = () => {
   const gridSize = getField();
@@ -28,8 +30,7 @@ export const ObstaclesFix: React.FC = () => {
     <>
       {obstaclesFixCoord.map((coord: Vector3) => (
         <mesh key={Math.random()} position={coord}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color={"#cccc00"} />
+          <Mushroom />
         </mesh>
       ))}
     </>
@@ -69,9 +70,8 @@ export const ObstaclesX: React.FC = () => {
       from: { position: item.initialPosition },
       to: { position: item.finalPosition },
       config: {
-        mass: 1,
-        tension: 200,
-        friction: 30,
+        duration: 800,
+        easing: easeLinear,
       },
     }))
   );
@@ -88,7 +88,6 @@ export const ObstaclesX: React.FC = () => {
     </>
   );
 };
-
 export const ObstaclesY: React.FC = () => {
   const gridSize = getField();
   const [obstaclesYCoord, setObstaclesYCoord] = useState<
@@ -123,9 +122,8 @@ export const ObstaclesY: React.FC = () => {
       from: { position: item.initialPosition },
       to: { position: item.finalPosition },
       config: {
-        mass: 1,
-        tension: 200,
-        friction: 30,
+        duration: 800,
+        easing: easeLinear,
       },
     }))
   );
