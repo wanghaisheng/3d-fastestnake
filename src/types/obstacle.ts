@@ -34,3 +34,9 @@ export type hedgehogProps = {
   index: number;
   line: string;
 };
+
+export type MushroomProps = {
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: [number, number, number];
+};
