@@ -17,7 +17,13 @@ function Hedgehog(props: hedgehogProps) {
   }
 
   return (
-    <group>
+    <group
+      position={[
+        line === "Y" ? direction[index] : 0,
+        line === "X" ? direction[index] : 0,
+        0,
+      ]}
+    >
       <mesh
         rotation={[
           0,
