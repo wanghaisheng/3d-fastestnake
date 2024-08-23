@@ -10,8 +10,8 @@ import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { getInterruptGame } from "./interruptGameEvent";
 import { checkPause } from "./pauseEvent";
 import { checkTimerWorking } from "../time/isTimer";
-import { checkMistake } from "../lives/isMistake";
 import getSnakeMoveDirection from "../snake/getSnakeMoveDirection";
+import { checkContact } from "./isContact";
 /**
  * @var Положение головы змейки перед совершением хода (для анимации)
  */
@@ -40,8 +40,8 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
     getSnakeMoveDirection()[1] === "right"
       ? -1
       : 1;
-  if (!checkTimerWorking()) moveDirection.name = "";
-  if (checkMistake() || checkTimerStep() || getInterruptGame())
+  if (!checkTimerWorking() || checkContact()) moveDirection.name = "";
+  if (checkTimerStep() || getInterruptGame())
     return { name: newName, value: newValue };
   if (e.code === "ArrowUp" && moveDirection.name !== "Y") {
     newName = "Y";

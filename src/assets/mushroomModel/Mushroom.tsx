@@ -28,17 +28,14 @@ function createWhiteDotsOnSphere(radius: number, count: number) {
   return dots;
 }
 
-function Mushroom({
-  position = [0, 0.5, 0.5],
-  rotation = [1, 0, 0],
-  scale = [0.1, 0.1, 0.1],
-}: MushroomProps) {
+function Mushroom(props: MushroomProps) {
+  const { position, rotation, scale } = props;
   const groupRef = useRef<THREE.Group>(null); // Явно указываем тип рефа
   const sphereRadius = 6;
   const dotCount = 30;
 
   useFrame(() => {
-    if (groupRef.current) {
+    if (groupRef.current && scale && rotation) {
       groupRef.current.scale.set(scale[0], scale[1], scale[2]); // Масштабируем гриб
       groupRef.current.rotation.set(rotation[0], rotation[1], rotation[2]); // Вращаем гриб
     }

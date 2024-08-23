@@ -5,8 +5,9 @@ import { getInterruptGame } from "./interruptGameEvent";
 import { getTouch } from "./touchEvent";
 import { checkPause, touchPauseEvent } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
-import { checkMistake } from "../lives/isMistake";
+// import { checkMistake } from "../lives/isMistake";
 import { SnakeHeadCoord } from "../../types/snake";
+import { checkContact } from "./isContact";
 
 let previousHeadParams: SnakeHeadCoord = {
   snakeHeadCoordX: 0,
@@ -21,7 +22,7 @@ const swipeDirectionEvent = (): Event => {
     value: 0,
   };
   if (
-    checkMistake() ||
+    /* checkMistake() || */
     getInterruptGame() ||
     (previousHeadParams.snakeHeadCoordX ===
       getSnakeHeadParams().snakeHeadCoordX &&
@@ -33,6 +34,7 @@ const swipeDirectionEvent = (): Event => {
     return newEvent;
   }
   const moveDirection = findLastMoveDirection();
+  if (checkContact()) moveDirection.name = "";
   if (
     getSnakeHeadParams().snakeHeadStepX !== 0 ||
     getSnakeHeadParams().snakeHeadStepY !== 0

@@ -30,7 +30,11 @@ export const ObstaclesFix: React.FC = () => {
     <>
       {obstaclesFixCoord.map((coord: Vector3) => (
         <mesh key={Math.random()} position={coord}>
-          <Mushroom />
+          <Mushroom
+            position={[0, 0, 0.5]}
+            rotation={[1.57, 0, 0]}
+            scale={[0.08, 0.08, 0.08]}
+          />
         </mesh>
       ))}
     </>
