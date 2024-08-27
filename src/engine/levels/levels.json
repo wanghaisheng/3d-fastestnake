@@ -1,11 +1,11 @@
 [
   {
-    "field": "101",
+    "field": "11",
     "time": "800000",
     "timerStep": "1",
     "food": "25",
     "lives": "3",
-    "obstacles": ["fix", "x", "x", "y", "y"],
+    "obstacles": ["y"],
     "bonuses": [
       {
         "type": "doubleScoresFood",

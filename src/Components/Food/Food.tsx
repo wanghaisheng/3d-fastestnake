@@ -28,10 +28,6 @@ const Food: React.FC = () => {
     <>
       {howMuchIsLeftToEat() !== 0 && (
         <primitive object={gltf.scene} position={foodPosition} scale={0.4} />
-        // <mesh position={foodPosition}>
-        //   <boxGeometry args={[1, 1, 1]} />
-        //   <meshStandardMaterial color="blue" />
-        // </mesh>
       )}
     </>
   );

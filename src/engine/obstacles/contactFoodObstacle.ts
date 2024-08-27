@@ -14,7 +14,7 @@ function contactFoodObstacle(props: obstacleContactProps): number {
   const { i, step } = props;
   step[i] = obstacleBounce({
     ...props,
-    cell: [getFoodCoord()[1], getFoodCoord()[0]],
+    cell: [getFoodCoord()[0], getFoodCoord()[1]],
   });
 
   return step[i];
