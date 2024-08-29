@@ -3,11 +3,11 @@ import * as TIMER from "../time/isTimer";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
 import { getInterruptGame } from "./interruptGameEvent";
 import { getTouch } from "./touchEvent";
-import { checkPause, touchPauseEvent } from "./pauseEvent";
+import { checkPause } from "./pauseEvent";
 import { getSnakeHeadParams } from "../snake/snake";
-// import { checkMistake } from "../lives/isMistake";
 import { SnakeHeadCoord } from "../../types/snake";
 import { checkContact } from "./isContact";
+import checkTimerStep from "../time/checkTimerStep";
 
 let previousHeadParams: SnakeHeadCoord = {
   snakeHeadCoordX: 0,
@@ -22,12 +22,12 @@ const swipeDirectionEvent = (): Event => {
     value: 0,
   };
   if (
-    /* checkMistake() || */
-    getInterruptGame() ||
-    (previousHeadParams.snakeHeadCoordX ===
-      getSnakeHeadParams().snakeHeadCoordX &&
-      previousHeadParams.snakeHeadCoordY ===
-        getSnakeHeadParams().snakeHeadCoordY)
+    !checkTimerStep() &&
+    (getInterruptGame() ||
+      (previousHeadParams.snakeHeadCoordX ===
+        getSnakeHeadParams().snakeHeadCoordX &&
+        previousHeadParams.snakeHeadCoordY ===
+          getSnakeHeadParams().snakeHeadCoordY))
   ) {
     previousHeadParams.snakeHeadCoordX = 0;
     previousHeadParams.snakeHeadCoordY = 0;
@@ -93,8 +93,7 @@ const swipeDirectionEvent = (): Event => {
         newEvent.value = snakeStep !== 1 ? "+" : "-";
       }
     }
-  } else if (Math.abs(Math.abs(xDiff) - Math.abs(yDiff)) < 1) touchPauseEvent();
-
+  }
   if (newEvent.name !== "" && !checkPause()) TIMER.startTimer();
 
   return newEvent;

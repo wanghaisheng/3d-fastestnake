@@ -5,6 +5,7 @@
  */
 import { Event } from "../../types/event";
 import findLastMoveDirection from "../protocol/findLastMoveDirection";
+import checkTimerStep from "../time/checkTimerStep";
 import { checkTimerWorking } from "../time/isTimer";
 /**
  * @var Хранит последнее направление движения змейки
@@ -41,6 +42,14 @@ function speedEvent(e: KeyboardEvent): Event {
       e.code === "ArrowDown")
   )
     newEvent = Object.assign({}, { name: moveDirection.name, value: "+" });
+  if (checkTimerStep() && moveDirection.name === "X" && e.code === "ArrowUp")
+    newEvent = Object.assign({}, { name: "Y", value: 1 });
+  if (checkTimerStep() && moveDirection.name === "X" && e.code === "ArrowDown")
+    newEvent = Object.assign({}, { name: "Y", value: -1 });
+  if (checkTimerStep() && moveDirection.name === "Y" && e.code === "ArrowRight")
+    newEvent = Object.assign({}, { name: "X", value: 1 });
+  if (checkTimerStep() && moveDirection.name === "Y" && e.code === "ArrowLeft")
+    newEvent = Object.assign({}, { name: "X", value: -1 });
   if (
     (moveDirection.name === "X" &&
       currentDirection === 1 &&

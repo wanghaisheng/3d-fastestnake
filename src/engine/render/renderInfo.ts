@@ -42,9 +42,6 @@ function renderInfo(): void {
     )}`;
   if (levelElement) levelElement.innerHTML = ` ${getCurrentLevel()}`;
   if (lifeElement) {
-    // lifeElement.style.opacity = `${
-    //   checkContact() && attention === attentionInterval ? 0.4 : 1
-    // }`;
     lifeElement.innerHTML = ` ${
       getLives() < 0 || howMuchIsLeftToEat() === 0 ? 0 : getLives()
     }`;
@@ -59,8 +56,6 @@ function renderInfo(): void {
       checkTimerStep() || checkPause() ? 0 : getStep()
     }`;
   }
-
-  // if (attention === attentionInterval) attention = 0;
 }
 
 export default renderInfo;
