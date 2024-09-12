@@ -34,7 +34,7 @@ function Hedgehog(props: hedgehogProps) {
         ]}
       >
         <coneGeometry args={[0.4, 1, 15, 1, false, 4.7, 3.14]} />
-        <meshStandardMaterial color={"#A18E74"} />
+        <meshStandardMaterial color="#A18E74" />
       </mesh>
       <mesh
         rotation={[
