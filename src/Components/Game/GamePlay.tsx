@@ -18,29 +18,29 @@ function GamePlay() {
   const { camera } = useThree();
   const gridSize = getField();
   const headPosition = useRef(new Vector3(0, 0, 0));
-  const targetPosition = useRef(new Vector3(0, 0, 5)); // Уменьшили значение Z до 5
+  const targetPosition = useRef(new Vector3(0, 0, 8)); // Уменьшили значение Z до 5
   const lightPoint = getFoodCoord();
-  let ratioX = 43;
+  let ratioX = 23; // 43;
   let ratioY = 37;
   if (
     Math.min(window.innerHeight, window.innerWidth) < 1000 &&
     Math.max(window.innerHeight, window.innerWidth) > 1000
   )
-    ratioX = 35;
+    ratioX = 25; //35;
   if (Math.max(window.innerHeight, window.innerWidth) < 1000) {
-    ratioX = 41;
+    ratioX = 21; // 41;
     ratioY = 43;
   }
   useFrame(() => {
     targetPosition.current.lerp(headPosition.current, 0.01 * getStep());
     camera.position.set(
-      Math.abs(Math.round(targetPosition.current.x)) <= ratioX
+      Math.abs(Math.round(targetPosition.current.x)) <= ratioX + 25
         ? targetPosition.current.x
-        : camera.position.x,
-      Math.abs(Math.round(targetPosition.current.y)) <= ratioY
+        : camera.position.x + 55,
+      (Math.abs(Math.round(targetPosition.current.y)) <= ratioY + 15
         ? targetPosition.current.y
-        : camera.position.y,
-      3.5
+        : camera.position.y) - 25,
+      25
     );
     camera.updateProjectionMatrix();
   });
