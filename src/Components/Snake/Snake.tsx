@@ -6,9 +6,11 @@ import setSnakeHeadProps from "./snakeHead/setSnakeHeadProps";
 import setSnakeTailProps from "./snakeTail/setSnakeTailProps";
 import setSnakeBodyProps from "./snakeBody/setSnakeBodyProps";
 import { a, useSprings } from "@react-spring/three";
+import { easeLinear } from "d3-ease";
 import { positionAnimationProps } from "../../types/three";
 import SnakeTail from "../../assets/snakeModel/snakeTail/snakeTail";
 import SnakeHead from "../../assets/snakeModel/snakeHead/SnakeHead";
+import { getStep } from "../../engine/time/timerStepPerLevel";
 
 interface SnakeProps {
   onHeadPositionUpdate: (position: [number, number, number]) => void;
@@ -34,9 +36,8 @@ const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
       from: { position: item.initialPosition },
       to: { position: item.finalPosition },
       config: {
-        mass: 1,
-        tension: 200,
-        friction: 30,
+        duration: 400 / getStep(),
+        easing: easeLinear,
       },
       delay: index,
     }))

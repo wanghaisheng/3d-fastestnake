@@ -1,4 +1,4 @@
-import { useThree, useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { getField } from "../../engine/field/fieldPerLevel";
 import Fields from "../Field/Field";
 import { getObstacles } from "../../engine/obstacles/obstaclesPerLevel";
@@ -10,42 +10,58 @@ import Food from "../Food/Food";
 import { useRef } from "react";
 import { Vector3 } from "three";
 import { getFoodCoord } from "../../engine/food/food";
+import setSnakePosition from "../Snake/setSnakePosition";
+import * as SNAKE from "../../engine/snake/snake";
+import { positionAnimationProps } from "../../types/three";
 import { getStep } from "../../engine/time/timerStepPerLevel";
 
-const previousTargetPosition: Vector3 = new Vector3(0, 0, 5);
+// const previousTargetPosition: Vector3 = new Vector3(0, 0, 5);
 
 function GamePlay() {
   const { camera } = useThree();
+  const cameraPosition: positionAnimationProps = {
+    initialPosition: [...setSnakePosition(0, SNAKE.getPreviousSnake())],
+    finalPosition: [...setSnakePosition(0, SNAKE.getSnakeBodyCoord())],
+  };
+  console.log(cameraPosition.initialPosition[1], camera.position);
+  cameraPosition.initialPosition[1] = cameraPosition.initialPosition[1] - 25;
+  cameraPosition.initialPosition[2] = cameraPosition.initialPosition[2] + 25;
+  cameraPosition.finalPosition[1] = cameraPosition.finalPosition[1] - 25;
+  cameraPosition.finalPosition[2] = cameraPosition.finalPosition[2] + 25;
+
   const gridSize = getField();
   const headPosition = useRef(new Vector3(0, 0, 0));
-  const targetPosition = useRef(new Vector3(0, 0, 8)); // Уменьшили значение Z до 5
+
+  const targetPosition = useRef(new Vector3(0, 0, 0));
+
   const lightPoint = getFoodCoord();
-  let ratioX = 23; // 43;
+
+  let ratioX = 43;
   let ratioY = 37;
   if (
     Math.min(window.innerHeight, window.innerWidth) < 1000 &&
     Math.max(window.innerHeight, window.innerWidth) > 1000
   )
-    ratioX = 25; //35;
+    ratioX = 35;
   if (Math.max(window.innerHeight, window.innerWidth) < 1000) {
-    ratioX = 21; // 41;
+    ratioX = 41;
     ratioY = 43;
   }
   useFrame(() => {
     targetPosition.current.lerp(headPosition.current, 0.01 * getStep());
     camera.position.set(
-      Math.abs(Math.round(targetPosition.current.x)) <= ratioX + 25
+      Math.abs(Math.round(targetPosition.current.x)) <= ratioX
         ? targetPosition.current.x
-        : camera.position.x + 55,
-      (Math.abs(Math.round(targetPosition.current.y)) <= ratioY + 15
+        : camera.position.x,
+      (Math.abs(Math.round(targetPosition.current.y)) <= ratioY + 25
         ? targetPosition.current.y
         : camera.position.y) - 25,
       25
     );
     camera.updateProjectionMatrix();
   });
-  previousTargetPosition.x = targetPosition.current.x;
-  previousTargetPosition.y = targetPosition.current.y;
+  // previousTargetPosition.x = targetPosition.current.x;
+  // previousTargetPosition.y = targetPosition.current.y;
 
   return (
     <mesh>
