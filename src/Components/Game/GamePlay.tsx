@@ -10,58 +10,47 @@ import Food from "../Food/Food";
 import { useRef } from "react";
 import { Vector3 } from "three";
 import { getFoodCoord } from "../../engine/food/food";
-import setSnakePosition from "../Snake/setSnakePosition";
-import * as SNAKE from "../../engine/snake/snake";
-import { positionAnimationProps } from "../../types/three";
 import { getStep } from "../../engine/time/timerStepPerLevel";
-
-// const previousTargetPosition: Vector3 = new Vector3(0, 0, 5);
+import getSnakeMoveDirection from "../../engine/snake/getSnakeMoveDirection";
+import checkTimerStep from "../../engine/time/checkTimerStep";
+import { checkContact } from "../../engine/events/isContact";
+import { checkTimerWorking } from "../../engine/time/isTimer";
 
 function GamePlay() {
   const { camera } = useThree();
-  const cameraPosition: positionAnimationProps = {
-    initialPosition: [...setSnakePosition(0, SNAKE.getPreviousSnake())],
-    finalPosition: [...setSnakePosition(0, SNAKE.getSnakeBodyCoord())],
-  };
-  console.log(cameraPosition.initialPosition[1], camera.position);
-  cameraPosition.initialPosition[1] = cameraPosition.initialPosition[1] - 25;
-  cameraPosition.initialPosition[2] = cameraPosition.initialPosition[2] + 25;
-  cameraPosition.finalPosition[1] = cameraPosition.finalPosition[1] - 25;
-  cameraPosition.finalPosition[2] = cameraPosition.finalPosition[2] + 25;
-
   const gridSize = getField();
   const headPosition = useRef(new Vector3(0, 0, 0));
-
   const targetPosition = useRef(new Vector3(0, 0, 0));
-
+  const gapStart = useRef(new Vector3(0, 0, 0));
+  const gapEnd = useRef(new Vector3(0, 0, 0));
   const lightPoint = getFoodCoord();
-
-  let ratioX = 43;
-  let ratioY = 37;
-  if (
-    Math.min(window.innerHeight, window.innerWidth) < 1000 &&
-    Math.max(window.innerHeight, window.innerWidth) > 1000
-  )
-    ratioX = 35;
-  if (Math.max(window.innerHeight, window.innerWidth) < 1000) {
-    ratioX = 41;
-    ratioY = 43;
-  }
+  const xOffset =
+    getSnakeMoveDirection()[0] === "Y"
+      ? 0
+      : getSnakeMoveDirection()[1] === "left"
+      ? -1
+      : 1;
+  const yOffset =
+    getSnakeMoveDirection()[0] === "X"
+      ? 0
+      : getSnakeMoveDirection()[1] === "up"
+      ? -1
+      : 1;
+  const standUp =
+    checkTimerStep() || checkContact() || !checkTimerWorking() ? 0 : 1;
+  // const gapStep = 10 * getStep();
+  gapEnd.current.x = 50 * xOffset * standUp;
+  gapEnd.current.y = 50 * yOffset * standUp;
   useFrame(() => {
-    targetPosition.current.lerp(headPosition.current, 0.01 * getStep());
+    targetPosition.current.lerp(headPosition.current, 0.001 * getStep());
+    gapStart.current.lerp(gapEnd.current, 0.001 * getStep());
     camera.position.set(
-      Math.abs(Math.round(targetPosition.current.x)) <= ratioX
-        ? targetPosition.current.x
-        : camera.position.x,
-      (Math.abs(Math.round(targetPosition.current.y)) <= ratioY + 25
-        ? targetPosition.current.y
-        : camera.position.y) - 25,
+      targetPosition.current.x + gapStart.current.x,
+      targetPosition.current.y - 25 - gapStart.current.y,
       25
     );
     camera.updateProjectionMatrix();
   });
-  // previousTargetPosition.x = targetPosition.current.x;
-  // previousTargetPosition.y = targetPosition.current.y;
 
   return (
     <mesh>
