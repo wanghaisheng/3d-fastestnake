@@ -24,23 +24,25 @@ function GamePlay() {
   const gapStart = useRef(new Vector3(0, 0, 0));
   const gapEnd = useRef(new Vector3(0, 0, 0));
   const lightPoint = getFoodCoord();
+  const gaps = [55, 52, 42, 41, 40];
+  const standUp =
+    checkTimerStep() || checkContact() || !checkTimerWorking()
+      ? 0
+      : gaps[getStep() - 1];
   const xOffset =
     getSnakeMoveDirection()[0] === "Y"
       ? 0
       : getSnakeMoveDirection()[1] === "left"
-      ? -1
-      : 1;
+      ? -standUp
+      : standUp;
   const yOffset =
     getSnakeMoveDirection()[0] === "X"
       ? 0
       : getSnakeMoveDirection()[1] === "up"
-      ? -1
-      : 1;
-  const standUp =
-    checkTimerStep() || checkContact() || !checkTimerWorking() ? 0 : 1;
-  // const gapStep = 10 * getStep();
-  gapEnd.current.x = 50 * xOffset * standUp;
-  gapEnd.current.y = 50 * yOffset * standUp;
+      ? -standUp
+      : standUp;
+  gapEnd.current.x = xOffset;
+  gapEnd.current.y = yOffset;
   useFrame(() => {
     targetPosition.current.lerp(headPosition.current, 0.001 * getStep());
     gapStart.current.lerp(gapEnd.current, 0.001 * getStep());
