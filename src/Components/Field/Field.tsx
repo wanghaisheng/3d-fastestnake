@@ -12,7 +12,6 @@ const Fields: React.FC<FieldsProps> = ({ size }) => {
         rotation-x={Math.PI / 2}
         position={[0, 0, 0.1]}
       />
-      {/* )} */}
     </group>
   );
 };
