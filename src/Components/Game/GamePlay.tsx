@@ -19,30 +19,28 @@ import { checkTimerWorking } from "../../engine/time/isTimer";
 function GamePlay() {
   const { camera } = useThree();
   const gridSize = getField();
-  const headPosition = useRef(new Vector3(0, 0, 0));
-  const targetPosition = useRef(new Vector3(0, 0, 0));
-  const gapStart = useRef(new Vector3(0, 0, 0));
-  const gapEnd = useRef(new Vector3(0, 0, 0));
+  const headPosition = useRef<Vector3>(new Vector3(0, 0, 0));
+  const targetPosition = useRef<Vector3>(new Vector3(0, 0, 0));
+  const gapStart = useRef<Vector3>(new Vector3(0, 0, 0));
+  const gapEnd = useRef<Vector3>(new Vector3(0, 0, 0));
   const lightPoint = getFoodCoord();
   const gaps = [55, 52, 42, 41, 40];
-  const standUp =
+  const standStill =
     checkTimerStep() || checkContact() || !checkTimerWorking()
       ? 0
       : gaps[getStep() - 1];
-  const xOffset =
+  gapEnd.current.x =
     getSnakeMoveDirection()[0] === "Y"
       ? 0
       : getSnakeMoveDirection()[1] === "left"
-      ? -standUp
-      : standUp;
-  const yOffset =
+      ? -standStill
+      : standStill;
+  gapEnd.current.y =
     getSnakeMoveDirection()[0] === "X"
       ? 0
       : getSnakeMoveDirection()[1] === "up"
-      ? -standUp
-      : standUp;
-  gapEnd.current.x = xOffset;
-  gapEnd.current.y = yOffset;
+      ? -standStill
+      : standStill;
   useFrame(() => {
     targetPosition.current.lerp(headPosition.current, 0.001 * getStep());
     gapStart.current.lerp(gapEnd.current, 0.001 * getStep());
