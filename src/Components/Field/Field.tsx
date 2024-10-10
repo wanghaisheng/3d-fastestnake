@@ -8,7 +8,7 @@ const Fields: React.FC<FieldsProps> = ({ size }) => {
         <meshStandardMaterial color="#56f854" />
       </mesh>
       <gridHelper
-        args={[size, size, 0xffffff, 0xffffff]}
+        args={[size, size, 0xe1e1e1, 0xe1e1e1]}
         rotation-x={Math.PI / 2}
         position={[0, 0, 0.1]}
       />
