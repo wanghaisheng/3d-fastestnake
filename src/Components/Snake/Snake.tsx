@@ -42,7 +42,6 @@ const Snake: React.FC<SnakeProps> = ({ onHeadPositionUpdate }) => {
       delay: index,
     }))
   );
-
   // Обновляем позицию головы змеи
   React.useEffect(() => {
     if (move[0]) {

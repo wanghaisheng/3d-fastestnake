@@ -22,7 +22,7 @@
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.160.1",
+    "three": "^0.169.0",
     "zustand": "^4.5.0"
   },
   "devDependencies": {
