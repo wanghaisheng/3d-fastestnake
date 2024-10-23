@@ -24,7 +24,7 @@ function GamePlay() {
   const gapStart = useRef<Vector3>(new Vector3(0, 0, 0));
   const gapEnd = useRef<Vector3>(new Vector3(0, 0, 0));
   const lightPoint = getFoodCoord();
-  const gaps = [55 + 3, 52 + 3, 42 + 3, 41 + 3, 40 + 3];
+  const gaps = [55, 52, 42, 41, 40];
   const standStill =
     checkTimerStep() || checkContact() || !checkTimerWorking()
       ? 0
