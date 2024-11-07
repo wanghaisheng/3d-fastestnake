@@ -35,8 +35,14 @@ export type hedgehogProps = {
   line: string;
 };
 
-export type MushroomProps = {
+interface assetsProps {
   position?: [number, number, number];
   rotation?: [number, number, number];
   scale?: [number, number, number];
-};
+}
+
+export interface MushroomProps extends assetsProps {}
+
+export interface RockProps extends assetsProps {
+  color?: number;
+}
