@@ -3,7 +3,10 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Vector3 } from "@react-three/fiber";
 import { animated, useSprings } from "@react-spring/three";
-import { getObstaclesFixCoord } from "../../engine/obstacles/obstaclesFix";
+import {
+  getObstaclesFix,
+  getObstaclesFixCoord,
+} from "../../engine/obstacles/obstaclesFix";
 import { getField } from "../../engine/field/fieldPerLevel";
 import * as OBSTACLES_X from "../../engine/obstacles/obstaclesX";
 import { getTimer } from "../../engine/time/timer";
@@ -11,6 +14,8 @@ import * as OBSTACLES_Y from "../../engine/obstacles/obstaclesY";
 import Hedgehog from "../../assets/hedgehogModel/Hedgehog";
 import { positionAnimationProps } from "../../types/three";
 import { easeLinear } from "d3-ease";
+// import Mushroom from "../../assets/mushroomModel/Mushroom";
+import Rock from "../../assets/rockModel/Rock";
 import Mushroom from "../../assets/mushroomModel/Mushroom";
 
 export const ObstaclesFix: React.FC = () => {
@@ -28,13 +33,22 @@ export const ObstaclesFix: React.FC = () => {
   }, [getTimer()]);
   return (
     <>
-      {obstaclesFixCoord.map((coord: Vector3) => (
+      {obstaclesFixCoord.map((coord: Vector3, index: number) => (
         <mesh key={Math.random()} position={coord}>
-          <Mushroom
-            position={[0, 0, 0.5]}
-            rotation={[1.57, 0, 0]}
-            scale={[0.08, 0.08, 0.08]}
-          />
+          {getObstaclesFix()[index].substring(4) === "R" && (
+            <Rock
+              position={[0, 0, 0.5]}
+              rotation={[1.57, 0, 0]}
+              scale={[0.08, 0.08, 0.08]}
+            />
+          )}
+          {getObstaclesFix()[index].substring(4) === "M" && (
+            <Mushroom
+              position={[0, 0, 0.5]}
+              rotation={[1.57, 0, 0]}
+              scale={[0.08, 0.08, 0.08]}
+            />
+          )}
         </mesh>
       ))}
     </>

@@ -12,3 +12,5 @@ export type positionAnimationProps = {
   initialPosition: number[];
   finalPosition: number[];
 };
+
+export type fogGradient = "no" | "light" | "middle" | "strong";

@@ -20,7 +20,9 @@ let obstaclesFixCoord: number[][] = [];
  * Выделяет из массива всех препятствий массив препятствий, которые не движутся
  */
 export function setObstaclesFix(): void {
-  obstaclesFix = getObstacles().filter((obstacle) => obstacle === "fix");
+  obstaclesFix = getObstacles().filter(
+    (obstacle) => obstacle.substring(0, 3) === "fix"
+  );
 }
 /**
  * Заносит массив координат [x, y] препятствий в obstaclesFixCoord

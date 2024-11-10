@@ -15,6 +15,8 @@ import { setLives, getLives } from "../lives/lives";
 import { setObstacles } from "../obstacles/obstaclesPerLevel";
 import { setBonuses } from "../bonuses/bonusesPerLevel";
 import { setNewGame } from "../events/interruptGameEvent";
+import { setFogStep } from "../../assets/assets";
+import { fogGradient } from "../../types/three";
 /**
  * Передает в настройки параметры текущего уровня из файла .json
  * @param currentLevel текущий уровень игры
@@ -41,6 +43,7 @@ function getLevelProps(currentLevel: number) {
         endFood: +bonus["endFood"],
       }))
     );
+  setFogStep(levels[currentLevel - 1].fog as fogGradient);
   setNewGame();
   stopTimer();
 }
